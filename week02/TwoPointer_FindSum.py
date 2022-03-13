@@ -1,16 +1,16 @@
-n, k = map(int, input().split())
+n,k = map(int,input().split())
 
-A = [int(x) for x in input().split()]
+A = [ int(x) for x in input().split()]
 
 find = False
 pointer = 0
 sum = 0
 
 for start in range(n):
-    while sum < k and pointer < n:
+    while sum<k and pointer<n:
         sum += A[pointer]
         pointer += 1
-    if sum == k:
+    if sum == k :
         find = True
         break
     sum -= A[start]
@@ -20,6 +20,9 @@ if find:
 else:
     print(False)
 
+		
+		
+		
 """
 해결 과정
 0. 리스트 자료구조를 이용했고 일종의 투포인터 기법을 사용했다
@@ -30,6 +33,7 @@ else:
 """
 """
 수행시간 분석
-0. 매 루프마다 항상 두 포인터 중 하나는 1씩 증가하고 있고, 각 포인터가 N번 누적 증가해야 알고리즘이 끝이난다
-1. 즉 각각의 배열 끝에 다다르는 데에 O(n)이라 합쳐져도 O(n)이다.
+0. 입력 및 변수 선언과 find를 체크하는 수행시간 O(1)
+1. 매 루프마다 항상 두 포인터 중 하나는 1씩 증가하고 있고, 각 포인터가 N번 누적 증가해야 알고리즘이 끝이난다
+2. 즉 각각의 배열 끝에 다다르는 데에 O(n)이라 합쳐져도 O(n)이다.
 """
