@@ -34,7 +34,7 @@
 - Find_CloaseMinumumValue.py
 
 ### 수행시간
--  O(n)
+-  O(n^2)
 
 
 ---
