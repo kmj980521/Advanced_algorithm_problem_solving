@@ -104,7 +104,7 @@
 - 5. 이 possible_case에서 4가지 경우를 생각해볼 수 있다. 1)첫 Queen과 같은 row에 존재하는 경우를 제외한다. 2)첫 Queen과 같은 column에 존재하는 경우를 제외한다. 3)첫 Queen과 같은 left_diagonal(왼쪽 대각선)에 존재하는 경우를 제외한다. 4)첫 Queen과 같은 right_diagonal(오른쪽 대각선)에 존재하는 경우를 제외한다.
 
 
-- 5. - 1) 첫 Queen과 같은 row에 존재하는 경우) row는 그대로고 오른쪽으로 가며 남은 column의 수를 센다. 최종 길이는 n-1인데 여기서 현재 첫 번째 Queen의 column 위치인 col을 빼준다.
+- 5. 1) 첫 Queen과 같은 row에 존재하는 경우) row는 그대로고 오른쪽으로 가며 남은 column의 수를 센다. 최종 길이는 n-1인데 여기서 현재 첫 번째 Queen의 column 위치인 col을 빼준다.
 
 
 - 5-2) 첫 Queen과 같은 column에 존재하는 경우) column은 그대로고 밑으로 가며 남은 row의 수를 센다. 최종 길이는 n-1인데 여기서 현재 첫 번째 Queen의 row 위치인 row 값을 빼준다.
