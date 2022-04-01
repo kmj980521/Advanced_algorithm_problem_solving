@@ -49,7 +49,7 @@
 - crossSteppingstone.py
 
 ### 수행시간
-- O(nlogn)
+- O(nlogL)
 
 
 
