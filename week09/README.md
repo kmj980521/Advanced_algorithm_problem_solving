@@ -85,29 +85,22 @@
 ---
 
 ## Prob4
-- 경로 합 질의
-- n개의 노드와 m개의 에지로 구성된 트리 T가 입력으로 주어지면 T의 노드 v가 주어질 때, query_path(v)함수는 T의 루트 노드에서 노드 v까지의 경로에 있는 노드의 비용을 모두 더한 값을 리턴한다. 
-- T의 노드 v가 주어질 때, query_update(v, d) 함수는 v의 비용을 d만큼 더한다.
+- 가까운 공통 조상 찾기 (LCA 문제)
+- n개의 노드와 m개의 에지로 구성된 트리 T가 입력으로 주어지면 두 노드 u와 v의 공통 조상 중에서 가장 가까운 조상을 찾는다. 
+
 
 
 ### 해결 방법
-- 최대 노드 수 n, 쿼리의 갯수 q를 입력받고, 노드 수 n에 따라 방문처리를 할 visited 리스트, graph, queries 리스트, 각 노드에 대해 자식수를 구할 child_node_count 리스트, 각 노드가 preorderList에 몇 번째에 위치하는지 값을 구할 수 있는 nodes_location 리스트, preorder dfs를 하며 방문하는 순서대로 노드의 cost를 저장할 path_sum 리스트, path_sum 리스트를 이용해 인접한 값의 차이를 저장할 dif 리스트, preorder cost로 만들 fenwick 트리인 fenwick_tree_by_dif 리스트를 선언한다. 
+- 최대 노드 수 n, 쿼리의 갯수 q를 입력받고, 노드 수 n에 따라 방문처리를 할 visited 리스트, graph, queries 리스트, Sparse Table을 만들 때 가능한 최대 노드의 갯수는 logn + 1이므로 logN이라는 벼수를 선언하고, 이를 이용해 만들 dp table 리스트, 각 노드의 부모 정보를 저장할 parent 리스트, 각 노드의 depth를 확인하기 위한 depth 리스트를 선언한다. 
 - n-1만큼의 입력을 받아 간선의 정보를 저장한다.
 - q만큼의 입력을 받아 쿼리의 갯수를 저장한다. 
-- dfs를 전위순회를 하며 특정 노드의 방문 시간(nodes_location)과 언제 방문을 했는지 preorderList에 append를 해주고 해당 노드의 cost를 path_sum리스트에 append하고, dfs를 수행할 때 마다 자식 수(child_node_count)를 구한다.
-- 그 후 구한 path_sum 리스트를 이용해 인접한 값의 차이를 저장하는 dif 리스트를 만든다.
-- dif 리스트를 이용해 fenwick_tree_by_dif라는 fenwick_tree를 만든다.
-- 그 후 각각의 쿼리에 대해 진행한다.
-  1) sum
-	  1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.(node_loc)
-	  2) 현재 노드 번호가 위치한 곳부터 1이 될 때까지 fenwick_tree에서 값을 접근하면 해당 노드까지의 거리가 되므로 node_loc이 1이 될 때까지 LSB를 빼주며 쿼리를 진행한다.
-  2) query
-	  1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.(node_loc)
-	  2) 해당 노드가 fenwick_tree에서 위치한 곳부터 최대 길이 n까지 LSB를 더해가며 fenwick_tree를 업데이트 한다. 
-	  3) 위의 과정을 거치면 업데이트하려는 특정 노드가 아닌 다른 특정 노드까지 가는 비용 또한 업데이트가 되므로 현재 노드와 해당 노드의 자식 수(child_node_count[node_number]) + 1부터 즉, 특정 노드의 subtree를 제외한 부분은 다시 update했던 값을 빼주며 fenwick_tree를 유지시킨다.
-- query_sum_of_path_with_fenwickTree.py
+- 전위순회를 dfs를 진행하며 특정 노드의 depth와 부모 노드의 정보를 parent 리스트에 저장한다. 
+- dfs를 한 후 만들어진 parent 리스트를 이용해 dp table에 각 노드의 부모의 저장을 저장한 후, 이를 이용해 logN까지 dp 테이블을 채워나가며 Sparse Table을 만든다.
+- 만들어진 Sparse Table을 이용해 LCA 알고리즘을 수행한다. 
+- LCA.py
 
 
 ### 수행시간
 - O((n+q)logn)
 
+---
