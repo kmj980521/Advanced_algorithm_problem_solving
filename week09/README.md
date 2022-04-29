@@ -36,7 +36,7 @@
 - dfs를 전위순회를 하며 특정 노드의 방문 시간(nodes_location)과 언제 방문을 했는지(preorder_cost) 자기 cost를 append 하고 dfs를 수행할 때 마다 자식 수(child_node_count)를 구한다.
 - dfs를 거치며 만들어지는 preorder_cost를 이용해 fenwick_tree(각각의 인덱스는 특정 노드 번호까지의 cost의 합을 fenwick_tree를 구현한 것)를 구현한다. 
 - 그 후 각각의 쿼리에 대해 진행한다.
-  ###### 1. update
+ ###### 1. update
 		  	1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.
 		  	2) 그 노드의 번호부터 fenwick_tree를 거치며 각각의 tree에 위치한 값에 update_cost를 더해주며 값을 업데이트 한다. 
  ###### 2. subtree
@@ -66,12 +66,12 @@
 - 그 후 구한 path_sum 리스트를 이용해 인접한 값의 차이를 저장하는 dif 리스트를 만든다.
 - dif 리스트를 이용해 fenwick_tree_by_dif라는 fenwick_tree를 만든다.
 - 그 후 각각의 쿼리에 대해 진행한다.
-  1) sum
+  ###### 1. sum
   
 	  1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.(node_loc)
 	  2) 현재 노드 번호가 위치한 곳부터 1이 될 때까지 fenwick_tree에서 값을 접근하면 해당 노드까지의 거리가 되므로 node_loc이 1이 될 때까지 LSB를 빼주며 쿼리를 진행한다.
 	  
-  2) query
+  ###### 2. query
   
 	  1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.(node_loc)
 	  2) 해당 노드가 fenwick_tree에서 위치한 곳부터 최대 길이 n까지 LSB를 더해가며 fenwick_tree를 업데이트 한다. 
