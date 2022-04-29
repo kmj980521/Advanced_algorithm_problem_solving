@@ -67,9 +67,12 @@
 - dif 리스트를 이용해 fenwick_tree_by_dif라는 fenwick_tree를 만든다.
 - 그 후 각각의 쿼리에 대해 진행한다.
   1) sum
+  
 	  1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.(node_loc)
 	  2) 현재 노드 번호가 위치한 곳부터 1이 될 때까지 fenwick_tree에서 값을 접근하면 해당 노드까지의 거리가 되므로 node_loc이 1이 될 때까지 LSB를 빼주며 쿼리를 진행한다.
+	  
   2) query
+  
 	  1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.(node_loc)
 	  2) 해당 노드가 fenwick_tree에서 위치한 곳부터 최대 길이 n까지 LSB를 더해가며 fenwick_tree를 업데이트 한다. 
 	  3) 위의 과정을 거치면 업데이트하려는 특정 노드가 아닌 다른 특정 노드까지 가는 비용 또한 업데이트가 되므로 현재 노드와 해당 노드의 자식 수(child_node_count[node_number]) + 1부터 즉, 특정 노드의 subtree를 제외한 부분은 다시 update했던 값을 빼주며 fenwick_tree를 유지시킨다.
