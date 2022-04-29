@@ -37,13 +37,13 @@
 - dfs를 거치며 만들어지는 preorder_cost를 이용해 fenwick_tree(각각의 인덱스는 특정 노드 번호까지의 cost의 합을 fenwick_tree를 구현한 것)를 구현한다. 
 - 그 후 각각의 쿼리에 대해 진행한다.
   1) update
-		  1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.
-		  2) 그 노드의 번호부터 fenwick_tree를 거치며 각각의 tree에 위치한 값에 update_cost를 더해주며 값을 업데이트 한다. 
+		  	1) 현재 노드 번호(node_number)가 preorderList에서 존재하는 위치(nodes_location)를 구한다.
+		  	2) 그 노드의 번호부터 fenwick_tree를 거치며 각각의 tree에 위치한 값에 update_cost를 더해주며 값을 업데이트 한다. 
   2) subtree
-		  1) preorder를 순회하고, cost를 기준으로 만든 fenwick_tree에서 (특정 노드의 위치 + 자식 수) - (특정 노드의 위치 - 1)이 자신의 subtree이므로, 현재 노드 번호가 preorderList에서 존재하는 위치(nodes_location)와 특정 노드의 자식 수(node_number)를 구한 all_of_subtree(특정 노드까지의 subtree)를 구한다.
-		  2) 현재 노드 번호가 preorderList에서 존재하는 위치(nodes_location) - 1 번째 위치는 특정 노드의 상위에 있는 node들을 제거한 값인 not_subtree(특정 노드의 상위 subtree들)를 구한다.
-		  3) all_of_subtree에 대해 fenwick_tree에 쿼리를 날려 각각의 값을 더해주며 sum 변수를 구해준다.
-		  4) not_subtree에 대해 fenwick_tree에 쿼리를 날려 위에서 구한 sum 변수에서 각각의 값을 빼주고 결과를 출력한다.
+		  	1) preorder를 순회하고, cost를 기준으로 만든 fenwick_tree에서 (특정 노드의 위치 + 자식 수) - (특정 노드의 위치 - 1)이 자신의 subtree이므로, 현재 노드 번호가 preorderList에서 존재하는 위치(nodes_location)와 특정 노드의 자식 수(node_number)를 구한 all_of_subtree(특정 노드까지의 subtree)를 구한다.
+		  	2) 현재 노드 번호가 preorderList에서 존재하는 위치(nodes_location) - 1 번째 위치는 특정 노드의 상위에 있는 node들을 제거한 값인 not_subtree(특정 노드의 상위 subtree들)를 구한다.
+		  	3) all_of_subtree에 대해 fenwick_tree에 쿼리를 날려 각각의 값을 더해주며 sum 변수를 구해준다.
+		  	4) not_subtree에 대해 fenwick_tree에 쿼리를 날려 위에서 구한 sum 변수에서 각각의 값을 빼주고 결과를 출력한다.
 - query_sum_of_cost_with_fenwickTree.py
 
 ### 수행시간
