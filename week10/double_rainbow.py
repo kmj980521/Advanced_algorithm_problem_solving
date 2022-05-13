@@ -29,7 +29,7 @@ while start <= end < n:
 
     ### 여기 오른쪽에 =를 지우면 됨!
 
-    if num_of_p_rainbow != k or num_of_outer_rainbow >= k:
+    if num_of_p_rainbow != k or num_of_outer_rainbow > k:
         # 현재 포인트 정보. 뒤를 늘려줄 것이기 때문에 end를 사용
         point_info = points[end]
         # 해당 점 카운트 1증가
