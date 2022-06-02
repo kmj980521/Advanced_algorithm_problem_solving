@@ -8,7 +8,7 @@
 - f(x)는 x의 1대 조상, f^2(x)는 2대 조상이라고 생각하면 f^k(x)는 x의 k대 조상이 된다.
 
 ### 해결 방법
-- 
+- composition_query.py
 
 ### 수행시간
 - O(nlogn)
